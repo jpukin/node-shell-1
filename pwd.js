@@ -1,6 +1,4 @@
-const pwdFunc = () => {
-    process.stdout.write(process.cwd());
-    process.stdout.write('\nprompt > ');
+const pwdFunc = (doneFunc) => {
+    doneFunc(process.cwd());
 }
-
-  module.exports = pwdFunc
+module.exports = pwdFunc

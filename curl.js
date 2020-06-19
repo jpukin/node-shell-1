@@ -1,14 +1,11 @@
 const request = require('request');
-const { stdout } = require('process');
-
-function curlFunc(urlName) {
+function curlFunc(urlName, doneFunc) {
   request(urlName, function(err, response, body) {
-    if (err) {throw err}
+    if (err) {doneFunc(err)}
     else {
-      process.stdout.write(body);
-      process.stdout.write('\nprompt > ')
+      doneFunc(body)
     }
   })
-};
+}
 
 module.exports = curlFunc;

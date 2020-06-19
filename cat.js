@@ -1,13 +1,12 @@
 const fs = require('fs');
 
-const catFunc = function (fileName) {
+const catFunc = function (fileName, doneFunc) {
 
   fs.readFile(process.cwd() + '/' + fileName, (err, data) => {
 
-    if (err) {throw err}
+    if (err) {doneFunc(err)}
     else {
-      process.stdout.write(data);
-      process.stdout.write('prompt > ');
+      doneFunc(data);
     }
 
   });
